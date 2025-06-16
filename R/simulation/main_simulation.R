@@ -83,7 +83,8 @@ var_types[10] <- "cts_dep"
 
 # Specify which settings to run
 settings_to_run <- c("No_Background", "Hard_Best", "Hard_Realistic", "Hard_Conservative", "Hard_Worst",
-                     "Bayesian_Best", "Bayesian_Realistic", "Bayesian_Conservative", "Bayesian_Worst")
+                     "Bayesian_Best", "Bayesian_Realistic", "Bayesian_Conservative", "Bayesian_Worst",
+                     "Bayesian_Spike_Slab")
 
 # Run the simulation
 simulation_results <- simulate_methods(
