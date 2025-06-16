@@ -3,7 +3,7 @@
 This repository contains all simulation code for the bachelor's thesis:
 
 **Title**: *Incorporating Background Knowledge in Graphical Causal Models: A Bayesian Approach*  
-**Author**: Mischa Hermans 
+**Author**: Mischa Hermans  
 **Institution**: Maastricht University – BSc Econometrics & Operations Research  
 **Supervisor**: Dr. Nalan Bastürk
 
