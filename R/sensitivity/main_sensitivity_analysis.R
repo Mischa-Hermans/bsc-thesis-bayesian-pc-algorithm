@@ -59,14 +59,8 @@ sensitivity_specs <- list(
   mu       = c(0.5, 1, 1.5, 2)
 )
 
-# TEMP: reduce for testing
-sensitivity_specs <- list(
-  pTP = c(0.1),
-  pFP = c(0.1)
-)
-
 # Define settings to run
-settings_to_run <- c("No_Background", "Hard_Realistic", "Bayesian_Realistic")
+settings_to_run <- c("No_Background", "Hard_Realistic", "Bayesian_Realistic", "Bayesian_Spike_Slab")
 
 # Variable types
 var_types <- rep("mixed", p)
