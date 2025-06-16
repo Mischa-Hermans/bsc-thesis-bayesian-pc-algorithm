@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Thesis Code: Incorporating Background Knowledge in Graphical Causal Models
 
 This repository contains all simulation code for the bachelor's thesis:
