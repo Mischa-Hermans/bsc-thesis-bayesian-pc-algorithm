@@ -1,16 +1,16 @@
 <<<<<<< HEAD
-# 🧠 Thesis Code: Incorporating Background Knowledge in Graphical Causal Models
+# Thesis Code: Incorporating Background Knowledge in Graphical Causal Models
 
 This repository contains all simulation code for the bachelor's thesis:
 
 **Title**: *Incorporating Background Knowledge in Graphical Causal Models: A Bayesian Approach*  
 **Author**: Mischa Hermans 
 **Institution**: Maastricht University – BSc Econometrics & Operations Research  
-**Supervisor**: Dr. Nalan Basturk
+**Supervisor**: Dr. Nalan Bastürk
 
 ---
 
-## 📘 Overview
+## Overview
 
 This project compares different ways of integrating prior knowledge into the PC algorithm for causal structure learning:
 
@@ -18,31 +18,40 @@ This project compares different ways of integrating prior knowledge into the PC 
 - **Hard Constraints**: background knowledge enforced as fixed edges/gaps
 - **Bayesian Priors**: CI tests informed by priors on regression coefficients using Stan
 - **Spike-and-Slab**: CI tests using sparse Bayesian priors on inclusion
-- **Add Data** *(optional)*: injects fake data to reinforce prior structure
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
-thesis-causal-discovery/
-├── R/                        # Modular R code
-│   ├── stan_models.R         # Stan model compilation
-│   ├── ci_tests.R            # CI testing functions
-│   ├── simulation_helpers.R  # Prior sampling, dummy data
-│   ├── evaluation.R          # Confusion and effect tracking
-│   └── plotting.R            # Sensitivity plots
-├── models/                   # (Optional) .stan model files
-│   ├── ci_test.stan
-│   └── ci_spike_slab.stan
-├── results/                  # Output Excel files and plots
-├── run_simulation.R          # Main simulation script
-└── README.md                 # This file
+bsc-thesis-bayesian-pc-algorithm/
+├── R/                            # Modular R code
+│   ├── models/                   # Stan model compilation
+│   │   └── stan_models.R
+│
+│   ├── sensitivity/              # Sensitivity analysis framework
+│   │   ├── main_sensitivity_analysis.R
+│   │   └── sensitivity_analysis_functions.R
+│
+│   ├── simulation/              # Simulation runner and logic
+│   │   ├── main_simulation.R
+│   │   └── simulation_functions.R
+│
+│   └── utils/                   # Utility functions
+│       ├── ci_tests.R              # Conditional independence tests
+│       ├── data_generation.R       # Data simulation from DAG
+│       ├── evaluation_metrics.R    # Confusion matrix and effect metrics
+│       └── prior_generation.R      # Sampling prior edges and gaps
+│
+├── .gitignore                  # Git ignore file
+├── LICENSE                     # MIT License
+└── README.md                   # Project description and instructions
+
 ```
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 Install required R packages with:
 
@@ -53,45 +62,42 @@ install.packages(c(
 ))
 ```
 
-Also ensure `rstan` is correctly configured to compile Stan models.
-
 ---
 
-## ▶️ Running the Code
+## Running the Code
 
 From the project root, simply run:
 
 ```r
-source("run_simulation.R")
+source("R/simulation/main_simulation.R")
 ```
 
 This script will:
 - Generate simulated data from a fixed DAG
 - Run the PC algorithm with different prior configurations
-- Evaluate structure recovery and causal effect accuracy
-- Save results to `results/simulation_results.xlsx`
-- Plot confusion and effect metrics
+- Evaluate structure recovery and causal effect accuracy by calculating Confusion metrics and MSE and variance of estimated causal effects
+
+To run the sensitivity analysis, use:
+
+```r
+source("R/sensitivity/main_sensitivity_analysis.R")
+```
+
+This script will:
+
+- Run multiple simulation rounds while varying one parameter at a time (e.g., pTP, pFP, mu, sigma, n, or noise_sd)
+- Evaluate how structure recovery and causal effect estimation performance change with each parameter
+- Print summary tables for confusion metrics and MSE/variance of estimated effects across all settings and parameter values
 
 ---
 
-## 📊 Output
-
-You’ll get:
-- Confusion metrics (TP, FP, FN, TN) by variable category
-- MSE and variance of estimated causal effects
-- Sensitivity plots saved to PDF (if desired)
+---
 
 ---
 
-## 📜 License
+## Acknowledgements
 
-This project is licensed under the MIT License.
-
----
-
-## 🧠 Acknowledgements
-
-The Bayesian CI test framework builds on Basturk et al. (2021), extended with Stan-based regression priors and spike-and-slab modeling.
+The Bayesian CI test framework builds on Basturk et al. (2024), extended with Stan-based regression priors and spike-and-slab modeling.
 
 =======
 # bsc-thesis-causal-discovery-with-priors
