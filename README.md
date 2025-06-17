@@ -101,4 +101,3 @@ The Bayesian CI test framework builds on Basturk et al. (2024), extended with St
 =======
 # bsc-thesis-causal-discovery-with-priors
 Bayesian extensions of the PC algorithm for causal discovery using prior knowledge. Bachelor thesis project in Econometrics &amp; Operations Research at Maastricht University.
->>>>>>> ff49f1dc0ae285b4e481fbc514aac9f381efa044
