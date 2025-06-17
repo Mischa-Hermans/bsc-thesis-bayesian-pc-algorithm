@@ -24,23 +24,22 @@ This project compares different ways of integrating prior knowledge into the PC 
 
 ```
 bsc-thesis-bayesian-pc-algorithm/
-├── R/                            # Modular R code
-│   ├── models/                   # Stan model compilation
-│   │   └── stan_models.R
+├── models/                     # Stan model compilation
+│   └── stan_models.R
 │
-│   ├── sensitivity/              # Sensitivity analysis framework
-│   │   ├── main_sensitivity_analysis.R
-│   │   └── sensitivity_analysis_functions.R
+├── sensitivity/                # Sensitivity analysis framework
+│   ├── main_sensitivity_analysis.R
+│   └── sensitivity_analysis_functions.R
 │
-│   ├── simulation/              # Simulation runner and logic
-│   │   ├── main_simulation.R
-│   │   └── simulation_functions.R
+├── simulation/                 # Simulation runner and logic
+│   ├── main_simulation.R
+│   └── simulation_functions.R
 │
-│   └── utils/                   # Utility functions
-│       ├── ci_tests.R              # Conditional independence tests
-│       ├── data_generation.R       # Data simulation from DAG
-│       ├── evaluation_metrics.R    # Confusion matrix and effect metrics
-│       └── prior_generation.R      # Sampling prior edges and gaps
+├── utils/                      # Utility functions
+│   ├── ci_tests.R              # Conditional independence tests
+│   ├── data_generation.R       # Data simulation from DAG
+│   ├── evaluation_metrics.R    # Confusion matrix and effect metrics
+│   └── prior_generation.R      # Sampling prior edges and gaps
 │
 ├── .gitignore                  # Git ignore file
 ├── LICENSE                     # MIT License
