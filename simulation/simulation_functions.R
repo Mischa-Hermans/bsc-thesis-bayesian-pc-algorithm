@@ -1,4 +1,4 @@
-# ---- R/simulation_functions.R ----
+# ---- simulation_functions.R ----
 # Simulation Runner for Causal Discovery under Prior Knowledge
 #
 # Description:
@@ -14,15 +14,15 @@
 #   - igraph
 #   - pcalg
 #   - stats (cor)
-#   - R/data_generation.R
-#   - R/prior_generation.R
-#   - R/evaluation_metrics.R
-#   - R/ci_tests.R (for bayesCItest_symmetric and bayesCItest_spike_slab_symmetric)
+#   - data_generation.R
+#   - prior_generation.R
+#   - evaluation_metrics.R
+#   - ci_tests.R (for bayesCItest_symmetric and bayesCItest_spike_slab_symmetric)
 #
 # Author: Mischa Hermans
 
-source("R/prior_generation.R")
-source("R/data_generation.R")
+source("prior_generation.R")
+source("data_generation.R")
 
 # Executes a single simulation run for multiple alpha levels and prior settings
 run_simulation <- function(run, alphas, p, n, A, true_graph, discrete_idx, var_types, 

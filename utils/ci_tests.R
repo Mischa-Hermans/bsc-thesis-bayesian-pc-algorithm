@@ -1,4 +1,4 @@
-# ---- R/ci_tests.R ----
+# ---- ci_tests.R ----
 # Conditional Independence Tests for PC Algorithm
 #
 # Description:

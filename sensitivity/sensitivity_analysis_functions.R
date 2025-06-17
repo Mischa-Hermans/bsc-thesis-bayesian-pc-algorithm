@@ -20,7 +20,7 @@
 #   - run_sensitivity_analysis.R
 #
 # Depends on:
-#   - simulate_methods() from R/simulation_functions.R
+#   - simulate_methods() from simulation_functions.R
 #   - igraph, pcalg, rstan
 #
 # Output:

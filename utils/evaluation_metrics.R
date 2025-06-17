@@ -1,4 +1,4 @@
-# ---- R/evaluation_metrics.R ----
+# ---- evaluation_metrics.R ----
 # Evaluation Metrics for Structure and Effect Estimation
 #
 # Description:

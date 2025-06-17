@@ -1,4 +1,4 @@
-# ---- run_sensitivity_analysis.R ----
+# ---- main_sensitivity_analysis.R ----
 # Sensitivity Analysis Main Script for Causal Discovery Methods
 #
 # Description:
@@ -17,18 +17,18 @@
 #   - Outputs results tables
 #
 # Depends on:
-#   - R/stan_models.R             (defines and compiles Stan models)
-#   - R/ci_tests.R                (Bayesian conditional independence tests)
-#   - R/evaluation_metrics.R     (TP/FP/FN/TN, MSE, etc.)
-#   - R/sensitivity_analysis_functions.R (core simulation loop and aggregation)
+#   - stan_models.R                      (defines and compiles Stan models)
+#   - ci_tests.R                         (Bayesian conditional independence tests)
+#   - evaluation_metrics.R               (TP/FP/FN/TN, MSE, etc.)
+#   - sensitivity_analysis_functions.R   (core simulation loop and aggregation)
 #
 # Author: Mischa Hermans
 
 # Load modules
-source("R/stan_models.R")
-source("R/ci_tests.R")
-source("R/evaluation_metrics.R")
-source("R/sensitivity_analysis_functions.R")
+source("stan_models.R")
+source("ci_tests.R")
+source("evaluation_metrics.R")
+source("sensitivity_analysis_functions.R")
 
 # Load required packages
 library(pcalg)
@@ -79,7 +79,7 @@ for (param in names(sensitivity_specs)) {
   results <- run_sensitivity_analysis(
     param_name = param,
     values = sensitivity_specs[[param]],
-    nruns = 1,
+    nruns = 30,
     alphas = c(0.2),
     p = p,
     n = n,

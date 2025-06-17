@@ -1,4 +1,4 @@
-# ---- R/prior_generation.R ----
+# ---- prior_generation.R ----
 # Prior Matrix Generation for PC Simulations
 #
 # Description:

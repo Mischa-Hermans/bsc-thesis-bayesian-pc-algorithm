@@ -1,4 +1,4 @@
-# ---- R/data_generation.R ----
+# ---- data_generation.R ----
 # Data Generation from DAG Structure
 #
 # Description:

@@ -14,11 +14,11 @@
 #   - Aggregated performance summaries (TP/FP/FN/TN, MSE, Variance)
 #
 # Dependencies:
-#   - R/stan_models.R
-#   - R/ci_tests.R
-#   - R/data_generation.R
-#   - R/evaluation_metrics.R
-#   - R/simulation_functions.R
+#   - stan_models.R
+#   - ci_tests.R
+#   - data_generation.R
+#   - evaluation_metrics.R
+#   - simulation_functions.R
 #   - igraph
 #   - pcalg
 #   - rstan
@@ -27,10 +27,10 @@
 # Author: Mischa Hermans
 
 # Load required project files
-source("R/stan_models.R")
-source("R/ci_tests.R")
-source("R/evaluation_metrics.R")
-source("R/simulation_functions.R")
+source("stan_models.R")
+source("ci_tests.R")
+source("evaluation_metrics.R")
+source("simulation_functions.R")
 
 # Load required libraries
 library(pcalg)
