@@ -67,7 +67,7 @@ install.packages(c(
 From the project root, simply run:
 
 ```r
-source("R/simulation/main_simulation.R")
+source("simulation/main_simulation.R")
 ```
 
 This script will:
@@ -78,7 +78,7 @@ This script will:
 To run the sensitivity analysis, use:
 
 ```r
-source("R/sensitivity/main_sensitivity_analysis.R")
+source("sensitivity/main_sensitivity_analysis.R")
 ```
 
 This script will:
