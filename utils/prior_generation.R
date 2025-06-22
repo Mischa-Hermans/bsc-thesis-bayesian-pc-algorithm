@@ -1,4 +1,4 @@
-# ---- prior_generation.R ----
+# ---- utils/prior_generation.R ----
 # Prior Matrix Generation for PC Simulations
 #
 # Description:
@@ -12,9 +12,12 @@
 #   - generate_prior_list(): Returns a list of prior configurations for selected settings
 #
 # Dependencies:
-#   - stats (runif)
+#   - stats
 #
 # Author: Mischa Hermans
+
+# Load required libraries
+library(stats)
 
 # Sample fixedGaps matrix given true/false negative rates
 sample_fixedGaps <- function(A, pTN, pFN, symmetric = TRUE) {

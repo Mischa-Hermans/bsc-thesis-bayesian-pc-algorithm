@@ -1,4 +1,4 @@
-# ---- evaluation_metrics.R ----
+# ---- utils/evaluation_metrics.R ----
 # Evaluation Metrics for Structure and Effect Estimation
 #
 # Description:
@@ -16,6 +16,10 @@
 #   - stats (lm)
 #
 # Author: Mischa Hermans
+
+# Load required libraries
+library(igraph)
+library(stats)
 
 # Compute basic confusion matrix (TP, FP, FN, TN) comparing true and estimated graphs
 compute_confusion_matrix <- function(true_graph, est_graph) {

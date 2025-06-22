@@ -1,4 +1,4 @@
-# ---- ci_tests.R ----
+# ---- utils/ci_tests.R ----
 # Conditional Independence Tests for PC Algorithm
 #
 # Description:
@@ -17,6 +17,10 @@
 #   - stats
 #
 # Author: Mischa Hermans
+
+# Load required libraries
+library(rstan)
+library(stats)
 
 # Performs a Bayesian conditional independence test using standard normal priors.
 # Returns a p-value for the coefficient of x in the regression of y on x and S.

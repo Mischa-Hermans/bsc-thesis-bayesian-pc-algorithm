@@ -1,4 +1,4 @@
-# ---- stan_models.R ----
+# ---- models/stan_models.R ----
 # Stan Model Compilation for Bayesian CI Testing
 #
 # Description:

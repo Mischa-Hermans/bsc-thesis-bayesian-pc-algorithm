@@ -1,4 +1,4 @@
-# ---- sensitivity_analysis_functions.R ----
+# ---- sensitivity/sensitivity_analysis_functions.R ----
 # Sensitivity Analysis Functions for Causal Discovery Evaluation
 #
 # Description:
@@ -17,11 +17,10 @@
 #       Combines confusion and effect results over sensitivity analysis.
 #
 # Used by:
-#   - run_sensitivity_analysis.R
+#   - sensitivity/run_sensitivity_analysis.R
 #
 # Depends on:
-#   - simulate_methods() from simulation_functions.R
-#   - igraph, pcalg, rstan
+#   - simulate_methods() from simulation/simulation_functions.R
 #
 # Output:
 #   - List of results per parameter value

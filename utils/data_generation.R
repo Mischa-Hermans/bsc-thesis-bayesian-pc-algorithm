@@ -1,4 +1,4 @@
-# ---- data_generation.R ----
+# ---- utils/data_generation.R ----
 # Data Generation from DAG Structure
 #
 # Description:
@@ -12,6 +12,9 @@
 #   - stats (rnorm, sample)
 #
 # Author: Mischa Hermans
+
+# Load required libraries
+library(stats)
 
 generate_data_from_dag <- function(n, p, A, discrete_idx, noise_sd = 1) {
   X <- matrix(NA, nrow = n, ncol = p)

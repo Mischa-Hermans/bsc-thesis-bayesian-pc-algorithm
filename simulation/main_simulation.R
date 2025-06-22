@@ -1,4 +1,4 @@
-# ---- run_simulation.R ----
+# ---- simulation/main_simulation.R ----
 # Main Script to Run Causal Discovery Simulations and Summarize Results
 #
 # Description:
@@ -14,33 +14,27 @@
 #   - Aggregated performance summaries (TP/FP/FN/TN, MSE, Variance)
 #
 # Dependencies:
-#   - stan_models.R
-#   - ci_tests.R
-#   - data_generation.R
-#   - evaluation_metrics.R
-#   - simulation_functions.R
-#   - igraph
-#   - pcalg
-#   - rstan
-#   - dplyr, tidyr, purrr, ggplot2, openxlsx, kableExtra
+#   - models/stan_models.R
+#   - utils/ci_tests.R
+#   - utils/data_generation.R
+#   - utils/evaluation_metrics.R
+#   - utils/results_summary.R
+#   - simulaton/simulation_functions.R
+#   - pcalg, igraph, dplyr, rstan
 #
 # Author: Mischa Hermans
 
 # Load required project files
-source("stan_models.R")
-source("ci_tests.R")
-source("evaluation_metrics.R")
-source("simulation_functions.R")
+source("models/stan_models.R")
+source("utils/ci_tests.R")
+source("utils/evaluation_metrics.R")
+source("utils/results_summary.R")
+source("simulation/simulation_functions.R")
 
 # Load required libraries
 library(pcalg)
 library(igraph)
-library(openxlsx)
-library(ggplot2)
-library(purrr)
-library(tidyr)
 library(dplyr)
-library(kableExtra)
 library(rstan)
 
 # Compile Stan models and define conditional independence tests
@@ -106,24 +100,6 @@ simulation_results <- simulate_methods(
   stan_model_spike_slab = stan_model_spike_slab
 )
 
-# Summarize structure recovery performance
-confusion_summary <- simulation_results$confusion %>%
-  group_by(alpha, setting, category) %>%
-  summarize(across(c(TP, FP, FN, TN), mean), .groups = "drop") %>%
-  complete(category = c("all", "discrete", "cts_indep", "cts_dep", "mixed"))
-
-kable(confusion_summary, digits = 1, caption = "Confusion Matrices by Alpha, Method, and Category") %>%
-  kable_styling(full_width = FALSE)
-
-# Summarize causal effect estimation performance
-effects_summary <- simulation_results$effects %>%
-  group_by(alpha, setting, category) %>%
-  summarize(
-    mse = mean(mse, na.rm = TRUE),
-    variance = mean(variance, na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  complete(category = c("all", "discrete", "cts_indep", "cts_dep", "mixed"))
-
-kable(effects_summary, digits = 3, caption = "MSE and Variance by Alpha, Method, and Category") %>%
-  kable_styling(full_width = FALSE)
+# Show results
+generate_confusion_table(simulation_results$confusion)
+generate_effects_table(simulation_results$effects)
