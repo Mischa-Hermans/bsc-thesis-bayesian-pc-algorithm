@@ -89,7 +89,7 @@ bayesCItest_spike_slab <- function(x, y, S, suffStat, epsilon = 0.1) {
   mu_vec <- sapply(predictors, function(pred) suffStat$prior_mu[pred, y])
   sigma_vec <- sapply(predictors, function(pred) suffStat$prior_sigma[pred, y])
   incl_vec <- sapply(predictors, function(pred) {
-    if (suffStat$prior_mask[pred, y] == 1) 0.9 else 0.1
+    if (suffStat$prior_mask[pred, y] == 1) suffStat$pi else 1 - suffStat$pi
   })
   
   # Format input for the spike-and-slab Stan model

@@ -20,7 +20,8 @@
 #   - models/stan_models.R                      
 #   - utils/ci_tests.R                         
 #   - utils/evaluation_metrics.R                     
-#   - sensitivity/sensitivity_analysis_functions.R   
+#   - sensitivity/sensitivity_analysis_functions.R
+#   - simulation/simulation_functions.R
 #
 # Author: Mischa Hermans
 
@@ -29,6 +30,7 @@ source("models/stan_models.R")
 source("utils/ci_tests.R")
 source("utils/evaluation_metrics.R")
 source("sensitivity/sensitivity_analysis_functions.R")
+source("simulation/simulation_functions.R")
 
 # Load required packages
 library(purrr)
@@ -48,6 +50,7 @@ bayesCItest_spike_slab_symmetric <- ci_tests$bayesCItest_spike_slab_symmetric
 
 # Define parameter grid for sensitivity analysis
 sensitivity_specs <- list(
+  pi       = c(0, 0.3, 0.7, 1),
   pTP      = seq(0, 1, 0.1),
   pFP      = seq(0, 1, 0.1),
   sigma    = seq(0.2, 3, 0.3),

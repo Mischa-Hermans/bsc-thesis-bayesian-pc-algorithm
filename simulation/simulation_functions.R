@@ -33,7 +33,7 @@ library(stats)
 # Executes a single simulation run for multiple alpha levels and prior settings
 run_simulation <- function(run, alphas, p, n, A, true_graph, discrete_idx, var_types, 
                            pTP = 0.8, pFP = 0.2, mu = 1.5, sigma = 1, noise_sd = 1,
-                           settings_to_run, stan_model, stan_model_spike_slab) {
+                           pi = 0.9, settings_to_run, stan_model, stan_model_spike_slab) {
   all_confusion <- data.frame()
   all_effects <- data.frame()
   
@@ -79,7 +79,9 @@ run_simulation <- function(run, alphas, p, n, A, true_graph, discrete_idx, var_t
                            prior_mask = prior_mask,
                            stan_model_spike_slab = stan_model_spike_slab,
                            alpha = alpha,
-                           cache = cache)
+                           cache = cache,
+                           pi = pi
+                           )
           pc_fit <- pc(suffStat, indepTest = bayesCItest_spike_slab_symmetric, alpha = alpha, labels = colnames(A))
         } else {
           suffStat <- list(data = X,
@@ -129,7 +131,7 @@ run_simulation <- function(run, alphas, p, n, A, true_graph, discrete_idx, var_t
 # Function to run multiple simulations
 simulate_methods <- function(nruns, alphas, p, n, A, true_graph, discrete_idx,
                              pTP = 0.8, pFP = 0.2, mu = 1.5, sigma = 1, noise_sd = 1,
-                             settings_to_run = NULL, var_types,
+                             pi = 0.9, settings_to_run = NULL, var_types,
                              stan_model, stan_model_spike_slab) {
   
   all_confusion <- data.frame()
@@ -138,7 +140,7 @@ simulate_methods <- function(nruns, alphas, p, n, A, true_graph, discrete_idx,
   for (run in seq_len(nruns)) {
     cat(sprintf("\n--- RUN %d ---\n", run))
     result <- run_simulation(run, alphas, p, n, A, true_graph, discrete_idx, var_types,
-                             pTP, pFP, mu, sigma, noise_sd, settings_to_run,
+                             pTP, pFP, mu, sigma, noise_sd, pi, settings_to_run,
                              stan_model = stan_model, stan_model_spike_slab = stan_model_spike_slab)
     all_confusion <- rbind(all_confusion, result$confusion)
     all_effects   <- rbind(all_effects, result$effects)

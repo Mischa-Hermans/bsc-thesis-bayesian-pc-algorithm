@@ -38,7 +38,8 @@ run_sensitivity_analysis <- function(param_name, values,
                                      var_types,
                                      stan_model,
                                      stan_model_spike_slab,
-                                     base_params = list(pTP = 0.8, pFP = 0.2, mu = 1.5, sigma = 1, noise_sd = 1)) {
+                                     base_params = list(pTP = 0.8, pFP = 0.2, mu = 1.5,
+                                                        sigma = 1, noise_sd = 1, pi = 0.9)) {
   results <- list()
   
   for (val in values) {
@@ -47,7 +48,7 @@ run_sensitivity_analysis <- function(param_name, values,
     current_params <- base_params
     current_params[[param_name]] <- val
     current_n <- if (param_name == "n") val else n
-    
+
     sim_result <- simulate_methods(
       nruns = nruns,
       alphas = alphas,
@@ -61,12 +62,13 @@ run_sensitivity_analysis <- function(param_name, values,
       mu = current_params$mu,
       sigma = current_params$sigma,
       noise_sd = current_params$noise_sd,
+      pi = current_params$pi,
       settings_to_run = settings_to_run,
       var_types = var_types,
       stan_model = stan_model,
       stan_model_spike_slab = stan_model_spike_slab
     )
-    
+
     results[[as.character(val)]] <- list(
       param_name = param_name,
       param_value = val,

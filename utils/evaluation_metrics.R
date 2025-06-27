@@ -113,19 +113,34 @@ track_effects <- function(X, adj_est, A, types) {
     mse_list <- c()
     variance_list <- c()
     for (j in idx) {
-      parents <- which(adj_est[, j] == 1)
-      parents <- intersect(parents, idx)  # restrict to same category
-      if (length(parents) > 0) {
-        fit <- lm(X[, j] ~ X[, parents, drop = FALSE])
-        est_effects <- coef(fit)[-1]
-        true_effects <- A[parents, j]
+      true_parents <- which(A[, j] != 0)
+      true_parents <- intersect(true_parents, idx)
+      
+      if (length(true_parents) > 0) {
+        # Run regression only on estimated parents (which may miss some true ones)
+        est_parents <- which(adj_est[, j] == 1)
+        est_parents <- intersect(est_parents, idx)
         
-        if (length(est_effects) > 0 && length(true_effects) == length(est_effects)) {
-          mse_list <- c(mse_list, mean((est_effects - true_effects)^2, na.rm = TRUE))
-          variance_list <- c(variance_list, var(est_effects, na.rm = TRUE))
+        if (length(est_parents) > 0) {
+          fit <- lm(X[, j] ~ X[, est_parents, drop = FALSE])
+          est_coefs <- coef(fit)[-1]  # remove intercept
+          names(est_coefs) <- est_parents
+        } else {
+          est_coefs <- numeric(0)  # no parents: all 0
         }
+        
+        # Build aligned vectors for true and estimated effects
+        true_effects <- A[true_parents, j]
+        est_effects <- sapply(true_parents, function(p) {
+          if (p %in% names(est_coefs)) est_coefs[as.character(p)] else 0
+        })
+        
+        # Compute MSE and variance
+        mse_list <- c(mse_list, mean((est_effects - true_effects)^2, na.rm = TRUE))
+        variance_list <- c(variance_list, var(est_effects, na.rm = TRUE))
       }
     }
+    
     
     res <- rbind(res, data.frame(
       category = cat,
