@@ -3,7 +3,7 @@
 #
 # Description:
 #   Runs the PC algorithm once using Bayesian conditional independence
-#   testing via Stan-based Bayesian linear regression (no spike-and-slab).
+#   testing via Stan-based Bayesian linear regression.
 #   Allows incorporating uncertain background knowledge about causal effects:
 #     - The expected effect of a variable on another can be specified in the mu matrix.
 #     - The confidence in that effect can be specified via the standard deviation in the sigma matrix.
